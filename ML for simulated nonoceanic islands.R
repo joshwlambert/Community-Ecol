@@ -1,11 +1,32 @@
 rm(list=ls())
 
 library(DAISIE)
+library(tidyverse)
+library(testit)
 
-#load the functions that are needed for the simulation
-setwd("~/studie biologie/jaar 2/Community Research/simulations")
-load("nonoceanic_functions.Rdata")
-#This includes the functions DAISIE_ONEcolonist, DAISIE_sim_core_nonoceanic, DAISIE_sim_nonoceanic and DAISIE_sim_update_state from the DAISIE repository
+#load allthe functions from the repository
+setwd("~/studie biologie/jaar 2/Community Research")
+
+## finds all .R files within a folder and soruces them
+sourceEntireFolder <- function(folderName, verbose=FALSE, showWarnings=TRUE) { 
+  files <- list.files(folderName, full.names=TRUE)
+  
+  # Grab only R files
+  files <- files[ grepl("\\.[rR]$", files) ]
+  
+  if (!length(files) && showWarnings)
+    warning("No R files in ", folderName)
+  
+  for (f in files) {
+    if (verbose)
+      cat("sourcing: ", f, "\n")
+    ## TODO:  add caught whether error or not and return that
+    try(source(f, local=FALSE, echo=FALSE), silent=!verbose)
+  }
+  return(invisible(NULL))
+}
+sourceEntireFolder(folderName = "DAISIE/R")
+
 
 #determine the parameter values for the nonoceanic island simulation
 pars = c(2.5,2.6,20,0.009,1.01) #anagenis rate, extinction rate, carrying capacity, immigration, cladogenesis
@@ -16,7 +37,7 @@ nonoceanic= c(0.1,0.1)
 island_replicates=DAISIE_sim_nonoceanic(time=time,M=M,pars=pars,replicates=10, nonoceanic = nonoceanic, divdepmodel = "CS")
 
 #save the simulation parameter values
-save(pars,M, time, nonoceanic, file="pars_nonoceanic_sim_1.Rdata")
+save(pars,M, time, nonoceanic, file="simulations/pars_nonoceanic_sim_1.Rdata")
 
 
 ###maximum likelihood parameter values in a dataframe
@@ -32,6 +53,8 @@ df <- factor()
 conv <- factor()
 DAISIEMLSUM <- data.frame(lambda_c,mu,K,gamma,lambda_a
                           ,loglik,df,conv)
+
+DAISIE_ML_CS(datalist=island_replicates[[1]], initparsopt = pars, ddmodel=11, idparsopt = 1:5, parsfix = NULL, idparsfix = NULL)
 
 #create a dataframe containing the maximum likelihood parameters of each replicate
 for (i in 1:length(island_replicates)){
