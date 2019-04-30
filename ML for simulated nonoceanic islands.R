@@ -3,11 +3,12 @@ rm(list=ls())
 library(DAISIE)
 library(tidyverse)
 library(testit)
+library(ggplot2)
 
 #load allthe functions from the repository
 setwd("~/studie biologie/jaar 2/Community Research")
 
-## finds all .R files within a folder and soruces them
+## finds all .R files within a folder and sources them by Ahmadou Dicko
 sourceEntireFolder <- function(folderName, verbose=FALSE, showWarnings=TRUE) { 
   files <- list.files(folderName, full.names=TRUE)
   
@@ -54,11 +55,11 @@ conv <- factor()
 DAISIEMLSUM <- data.frame(lambda_c,mu,K,gamma,lambda_a
                           ,loglik,df,conv)
 
-DAISIE_ML_CS(datalist=island_replicates[[1]], initparsopt = pars, ddmodel=11, idparsopt = 1:5, parsfix = NULL, idparsfix = NULL)
+DAISIE::DAISIE_ML(datalist=island_replicates[[1]], initparsopt = pars, ddmodel=11, idparsopt = 1:5, parsfix = NULL, idparsfix = NULL)
 
 #create a dataframe containing the maximum likelihood parameters of each replicate
 for (i in 1:length(island_replicates)){
-  DAISIEML <- DAISIE_ML_CS(datalist=island_replicates[[i]], initparsopt = pars, ddmodel=11, idparsopt = 1:5, parsfix = NULL, idparsfix = NULL)
+  DAISIEML <- DAISIE::DAISIE_ML(datalist=island_replicates[[i]], initparsopt = pars, ddmodel=11, idparsopt = 1:5, parsfix = NULL, idparsfix = NULL)
   DAISIEMLSUM <- rbind(DAISIEMLSUM, DAISIEML)
 }
 
@@ -67,3 +68,10 @@ write.table(DAISIEMLSUM, "maximum likelihood parameter values.csv", quote = F, r
 
 #save the dataframe
 save(DAISIEMLSUM,file="ML_values_sim_1.Rdata")
+
+##creates a violin plot with dots for a single predicted variable or the log likelihood(change the variable by chancing the y value)
+
+ggplot(testdata,aes(x=0,y=loglik)) +geom_violin() + geom_dotplot(binaxis = "y", binwidth = 1, stackdir="center")
+
+ggplot(testdata,aes(x=0,y=gamma)) +geom_violin() + geom_dotplot(binaxis = "y", binwidth = .001, stackdir="center")
+
