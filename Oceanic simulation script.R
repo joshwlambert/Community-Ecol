@@ -1,12 +1,12 @@
 rm(list=ls())
 
-library(DAISIE)
+devtools::load_all(".")
 library(tidyverse)
 library(testit)
 library(ggplot2)
 
 #load all the functions from the repository
-setwd("~/DAISIE project")
+setwd("~/DAISIEproject")
 
 ## finds all .R files within a folder and sources them by Ahmadou Dicko
 sourceEntireFolder <- function(folderName, verbose=FALSE, showWarnings=TRUE) { 
@@ -28,17 +28,17 @@ sourceEntireFolder <- function(folderName, verbose=FALSE, showWarnings=TRUE) {
 }
 sourceEntireFolder(folderName = "R")
 
-
-#determine the parameter values for the nonoceanic island simulation
-pars = c(2.5,2.6,20,0.009,1.01) #anagenis rate, extinction rate, carrying capacity, immigration, cladogenesis
-time=4 #island age in million of years
+#determine the parameter values for the oceanic island simulation.
+pars = c(1,2.5,20,0.01,2.5) #anagenis rate, extinction rate, carrying capacity, immigration, cladogenesis
+# standard initial values, at least change each value once for a simulation and MLE.
+time=4 #island age in million of years (possibly time=10 if time is available).
 M=1000 #mainland species pool
 #run the simulation
-island_replicates=DAISIE_sim_oceanic(time=time,M=M,pars=pars,replicates=10, nonoceanic = nonoceanic, divdepmodel = "CS")
+island_replicates=DAISIE_sim_oceanic(time=time,M=M,pars=pars,replicates=10, divdepmodel = "CS")
 
 #save the simulation parameter values
-save(pars,M, time, oceanic, file="simulations/pars_oceanic_sim_1.Rdata")
-
+setwd("C:/Users/Gebruiker/Documents/DAISIEproject/Oceanic_simulations")
+save(pars, M, time, file ="pars_oceanic_sim_1.Rdata")
 
 ###maximum likelihood parameter values in a dataframe
 
@@ -54,11 +54,11 @@ conv <- factor()
 DAISIEMLSUM <- data.frame(lambda_c,mu,K,gamma,lambda_a
                           ,loglik,df,conv)
 
-DAISIE::DAISIE_ML(datalist=island_replicates[[1]], initparsopt = pars, ddmodel=11, idparsopt = 1:5, parsfix = NULL, idparsfix = NULL)
+DAISIE_ML(datalist=island_replicates[[1]], initparsopt = pars, ddmodel = 11, idparsopt = 1:5, parsfix = NULL, idparsfix = NULL)
 
 #create a dataframe containing the maximum likelihood parameters of each replicate
 for (i in 1:length(island_replicates)){
-  DAISIEML <- DAISIE::DAISIE_ML(datalist=island_replicates[[i]], initparsopt = pars, ddmodel=11, idparsopt = 1:5, parsfix = NULL, idparsfix = NULL)
+  DAISIEML <- DAISIE::DAISIE_ML(datalist=island_replicates[[i]], initparsopt = pars, ddmodel=0, idparsopt = 1:5, parsfix = NULL, idparsfix = NULL)
   DAISIEMLSUM <- rbind(DAISIEMLSUM, DAISIEML)
 }
 
