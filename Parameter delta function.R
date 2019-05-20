@@ -34,7 +34,7 @@ model_differences <- function(data, island_age, clado_rate, ext_rate, immig_rate
     oceanic_abs_diff <- tidyr::drop_na(oceanic_abs_diff)
     
     #deal with any outliers
-    anomalize::anomalize(oceanic_abs_diff, oceanic_abs_diff$lambda_c)
+    #anomalize::anomalize(oceanic_abs_diff, oceanic_abs_diff$lambda_c)
     
     #calculate the average of the absolute differences
     oceanic_mean_lac <- mean(oceanic_abs_diff$lambda_c)
