@@ -4,7 +4,7 @@
 #currently
 
 model_differences <- function(data, island_age, clado_rate, ext_rate, immig_rate, ana_rate,
-                              prop_mainland, prop_non_endemic, clado_diff = TRUE, 
+                              mainland, nonendemic, clado_diff = TRUE, 
                               ext_diff = FALSE, immig_diff = FALSE, ana_diff = FALSE) {
   DAISIEdata <- as_tibble(DAISIETable)
   
@@ -46,10 +46,10 @@ model_differences <- function(data, island_age, clado_rate, ext_rate, immig_rate
     nonoceanic_time_lac_mu <- dplyr::filter(nonoceanic_time_lac, mu_sim == ext_rate)
     
     #isolate for a given proportion of mainland 
-    nonoceanic_time_lac_mu_mainland <- dplyr::filter(nonoceanic_time_lac_mu, prop_mainland == prop_mainland)
+    nonoceanic_time_lac_mu_mainland <- dplyr::filter(nonoceanic_time_lac_mu, prop_mainland == mainland)
     
     #isolate for a given proportion of nonendemics 
-    nonoceanic_time_lac_mu_mainland_nonend <- dplyr::filter(nonoceanic_time_lac_mu_mainland, prop_non_endemic == prop_non_endemic)
+    nonoceanic_time_lac_mu_mainland_nonend <- dplyr::filter(nonoceanic_time_lac_mu_mainland, prop_non_endemic == nonendemic)
     
     #calculate the absolute difference between ML estimate and true value
     nonoceanic_abs_diff <- dplyr::mutate(nonoceanic_time_lac_mu, abs(lambda_c - lambda_c_sim))
@@ -110,4 +110,5 @@ model_differences <- function(data, island_age, clado_rate, ext_rate, immig_rate
   }
   return(relative_delta)
 }
+
 
