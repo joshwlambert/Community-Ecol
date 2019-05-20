@@ -1,6 +1,7 @@
 ana_param_delta <- function(data, island_age, clado_rate, ext_rate, immig_rate = NULL, 
                             ana_rate = NULL, mainland, nonendemic, clado_diff = TRUE, 
-                            ext_diff = FALSE, immig_diff = FALSE, ana_diff = FALSE)
+                            ext_diff = FALSE, immig_diff = FALSE, ana_diff = FALSE,
+                            oceanic_time = oceanic_time, nonoceanic_time = nonoceanic_time) {
 
 #isolate for a given value of cladogenesis
 oceanic_time_lac <- dplyr::filter(oceanic_time, lambda_c_sim == clado_rate)  
@@ -44,12 +45,6 @@ nonoceanic_time_lac_mu_mainland <- dplyr::filter(nonoceanic_time_lac_mu, prop_ma
 #isolate for a given proportion of nonendemics 
 nonoceanic_time_lac_mu_mainland_nonend <- dplyr::filter(nonoceanic_time_lac_mu_mainland, prop_non_endemic == nonendemic)
 
-#log transform lambda_a
-nonoceanic_time_lac_mu_mainland_nonend <- dplyr::mutate(nonoceanic_time_lac_mu, log(lambda_a))
-
-#log transform lambda_c_sim
-nonoceanic_time_lac_mu_mainland_nonend <- dplyr::mutate(nonoceanic_time_lac_mu, log(lambda_a_sim))
-
 #calculate the absolute difference between ML estimate and true value
 nonoceanic_abs_diff <- dplyr::mutate(nonoceanic_time_lac_mu_mainland_nonend, abs(log(lambda_a) - log(lambda_a_sim)))
 
@@ -63,5 +58,5 @@ nonoceanic_mean_laa <- mean(nonoceanic_abs_diff$delta_lam_a)
 delta <- (oceanic_mean_laa - nonoceanic_mean_laa)
 
 #Calculate the relative error of the differences
-relative_delta <- delta/mean(DAISIEdata$lambda_a_sim)
+relative_delta <- delta/mean(nonoceanic_time_lac_mu_mainland_nonend$lambda_a_sim)
 }
