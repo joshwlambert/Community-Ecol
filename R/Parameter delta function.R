@@ -3,8 +3,8 @@
 #The function requires a dataframe with all ML estiamtes and simulating values,
 #currently
 
-model_differences <- function(data, island_age, clado_rate, ext_rate, immig_rate, ana_rate,
-                              mainland, nonendemic, clado_diff = TRUE, 
+model_differences <- function(data, island_age, clado_rate, ext_rate, immig_rate = NULL, 
+                              ana_rate = NULL, mainland, nonendemic, clado_diff = TRUE, 
                               ext_diff = FALSE, immig_diff = FALSE, ana_diff = FALSE) {
   DAISIEdata <- as_tibble(DAISIETable)
   
@@ -28,8 +28,8 @@ model_differences <- function(data, island_age, clado_rate, ext_rate, immig_rate
     oceanic_time_lac_mu <- dplyr::filter(oceanic_time_lac, mu_sim == ext_rate)
     
     #calculate absolute difference between ML estimate and true value
-    oceanic_abs_diff <- dplyr::mutate(oceanic_time_lac_mu, abs(lambda_c - lambda_c_sim))
-    
+    oceanic_abs_diff <- dplyr::mutate(oceanic_time_lac_mu, abs(log(lambda_c) - log(lambda_c_sim)))
+
     #remove any NA values
     oceanic_abs_diff <- tidyr::drop_na(oceanic_abs_diff)
     
