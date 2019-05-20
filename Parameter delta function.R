@@ -52,7 +52,7 @@ model_differences <- function(data, island_age, clado_rate, ext_rate, immig_rate
     nonoceanic_time_lac_mu_mainland_nonend <- dplyr::filter(nonoceanic_time_lac_mu_mainland, prop_non_endemic == nonendemic)
     
     #calculate the absolute difference between ML estimate and true value
-    nonoceanic_abs_diff <- dplyr::mutate(nonoceanic_time_lac_mu, abs(lambda_c - lambda_c_sim))
+    nonoceanic_abs_diff <- dplyr::mutate(nonoceanic_time_lac_mu_mainland_nonend, abs(lambda_c - lambda_c_sim))
     
     #remove any NA values
     nonoceanic_abs_diff <- tidyr::drop_na(nonoceanic_abs_diff)
@@ -61,10 +61,10 @@ model_differences <- function(data, island_age, clado_rate, ext_rate, immig_rate
     nonoceanic_mean_lac <- mean(nonoceanic_abs_diff$lambda_c)
     
     #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
-    diff <- (oceanic_mean_lac - nonoceanic_mean_lac)
+    delta <- (oceanic_mean_lac - nonoceanic_mean_lac)
     
     #Calculate the relative error of the differences
-    relative_delta <- diff/mean(DAISIEdata$lambda_c_sim)
+    relative_delta <- delta/mean(DAISIEdata$lambda_c_sim)
   }
   
   if (ext_diff == TRUE) {
