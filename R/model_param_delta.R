@@ -63,24 +63,26 @@ clado_param_delta <- function(data, island_age, clado_rate, ext_rate, immig_rate
   #isolate for a given value of cladogenesis
 
   oceanic_abs_diff <- oceanic_time %>%
-    dplyr::filter(lambda_c_sim == clado_rate) %>%
-    dplyr::filter(mu_sim == ext_rate) %>%
-    dplyr::mutate(oceanic_delta_lac = abs(log(lambda_c) - log(lambda_c_sim))) %>%
-    tidyr::drop_na()
-  oceanic_mean_lac <- mean(oceanic_abs_diff$oceanic_delta_lac)
+    dplyr::filter(lambda_c_sim == clado_rate) %>% #isolate for a given value of cladogenesis
+    dplyr::filter(mu_sim == ext_rate) %>% #isolate for a given value of extinction
+    dplyr::mutate(oceanic_delta_lac = abs(log(lambda_c) - log(lambda_c_sim))) %>% #calculate absolute difference between ML estimate and true value
+    tidyr::drop_na() #remove any NA values
+  #deal with any outliers
+  oceanic_mean_lac <- mean(oceanic_abs_diff$oceanic_delta_lac)  #calculate the average of the absolute differences
   
   nonoceanic_abs_diff <- nonoceanic_time %>%
-    dplyr::filter(lambda_c_sim == clado_rate) %>%
-    dplyr::filter(mu_sim == ext_rate) %>%
-    dplyr::filter(prop_mainland == mainland) %>%
-    dplyr::filter(prop_non_endemic == nonendemic) %>%
-    dplyr::mutate(nonoceanic_delta_lac = abs(log(lambda_c) - log(lambda_c_sim))) %>%
-    tidyr::drop_na()
-  nonoceanic_mean_lac <- mean(nonoceanic_abs_diff$nonoceanic_delta_lac)
+    dplyr::filter(lambda_c_sim == clado_rate) %>% #isolate for a given value of cladogenesis
+    dplyr::filter(mu_sim == ext_rate) %>% #isolate for a given value of extinction
+    dplyr::filter(prop_mainland == mainland) %>% #isolate for a given proportion of mainland 
+    dplyr::filter(prop_non_endemic == nonendemic) %>% #isolate for a given proportion of nonendemics 
+    dplyr::mutate(nonoceanic_delta_lac = abs(log(lambda_c) - log(lambda_c_sim))) %>% #calculate the absolute difference between ML estimate and true value
+    tidyr::drop_na() #remove any NA values
+  #deal with any outliers
+  nonoceanic_mean_lac <- mean(nonoceanic_abs_diff$nonoceanic_delta_lac) #calculate the average of the absolute differences
   
-  delta <- (oceanic_mean_lac - nonoceanic_mean_lac)
+  delta <- (oceanic_mean_lac - nonoceanic_mean_lac) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
   
-  relative_delta <- delta/clado_rate
+  relative_delta <- delta/clado_rate #Calculate the relative error of the differences
   
   return(relative_delta)
 }
@@ -90,26 +92,27 @@ ext_param_delta <- function(data, island_age, clado_rate, ext_rate, immig_rate,
                             ext_diff = FALSE, immig_diff = FALSE, ana_diff = FALSE,
                             oceanic_time = oceanic_time, nonoceanic_time = nonoceanic_time) {
   
-  oceanic_abs_diff <- oceanic_time %>%
-    dplyr::filter(lambda_c_sim == clado_rate) %>%
-    dplyr::filter(mu_sim == ext_rate) %>%
-    dplyr::mutate(oceanic_delta_mu = abs(log(mu) - log(mu_sim))) %>%
-    tidyr::drop_na()
-
-  oceanic_mean_mu <- mean(oceanic_abs_diff$oceanic_delta_mu)
+  oceanic_abs_diff <- oceanic_time %>% 
+    dplyr::filter(lambda_c_sim == clado_rate) %>% #isolate for a given value of cladogenesis
+    dplyr::filter(mu_sim == ext_rate) %>% #isolate for a given value of extinction
+    dplyr::mutate(oceanic_delta_mu = abs(log(mu) - log(mu_sim))) %>% #calculate absolute difference between ML estimate and true value
+    tidyr::drop_na() #remove any NA values
+  #deal with any outliers
+  oceanic_mean_mu <- mean(oceanic_abs_diff$oceanic_delta_mu) #calculate the average of the absolute differences
   
   nonoceanic_abs_diff <- nonoceanic_time %>%
-    dplyr::filter(lambda_c_sim == clado_rate) %>%
-    dplyr::filter(mu_sim == ext_rate) %>%
-    dplyr::filter(prop_mainland == mainland) %>%
-    dplyr::filter(prop_non_endemic == nonendemic) %>%
-    dplyr::mutate(nonoceanic_delta_mu = abs(log(mu) - log(mu_sim))) %>%
-    tidyr::drop_na()
-  nonoceanic_mean_mu <- mean(nonoceanic_abs_diff$nonoceanic_delta_mu)
+    dplyr::filter(lambda_c_sim == clado_rate) %>% #isolate for a given value of cladogenesis
+    dplyr::filter(mu_sim == ext_rate) %>% #isolate for a given value of extinction
+    dplyr::filter(prop_mainland == mainland) %>% #isolate for a given proportion of mainland 
+    dplyr::filter(prop_non_endemic == nonendemic) %>% #isolate for a given proportion of nonendemics 
+    dplyr::mutate(nonoceanic_delta_mu = abs(log(mu) - log(mu_sim))) %>% #calculate the absolute difference between ML estimate and true value
+    tidyr::drop_na() #remove any NA values
+  #deal with any outliers
+  nonoceanic_mean_mu <- mean(nonoceanic_abs_diff$nonoceanic_delta_mu) #calculate the average of the absolute differences
 
-  delta <- (oceanic_mean_mu - nonoceanic_mean_mu)
+  delta <- (oceanic_mean_mu - nonoceanic_mean_mu) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
   
-  relative_delta <- delta/ext_rate
+  relative_delta <- delta/ext_rate #Calculate the relative error of the differences
   
   return(relative_delta)
 }
@@ -120,24 +123,26 @@ immig_param_delta <- function(data, island_age, clado_rate, ext_rate, immig_rate
                               oceanic_time = oceanic_time, nonoceanic_time = nonoceanic_time) {
   
   oceanic_abs_diff <- oceanic_time %>%
-    dplyr::filter(lambda_c_sim == clado_rate) %>%  
-    dplyr::filter(mu_sim == ext_rate) %>%
-    dplyr::mutate(oceanic_delta_gam = abs(log(gamma) - log(gamma_sim))) %>%
-    tidyr::drop_na()
-  oceanic_mean_gamma <- mean(oceanic_abs_diff$oceanic_delta_gam)
+    dplyr::filter(lambda_c_sim == clado_rate) %>% #isolate for a given value of cladogenesis
+    dplyr::filter(mu_sim == ext_rate) %>% #isolate for a given value of extinction
+    dplyr::mutate(oceanic_delta_gam = abs(log(gamma) - log(gamma_sim))) %>% #calculate absolute difference between ML estimate and true value
+    tidyr::drop_na() #remove any NA values
+  #deal with any outliers
+  oceanic_mean_gamma <- mean(oceanic_abs_diff$oceanic_delta_gam) #calculate the average of the absolute differences
   
   nonoceanic_abs_diff <- nonoceanic_time %>%
-    dplyr::filter(lambda_c_sim == clado_rate) %>%
-    dplyr::filter(mu_sim == ext_rate) %>%
-    dplyr::filter(prop_mainland == mainland) %>%
-    dplyr::filter(prop_non_endemic == nonendemic) %>%
-    dplyr::mutate(nonoceanic_delta_gam = abs(log(gamma) - log(gamma_sim))) %>%
-    tidyr::drop_na() 
-  nonoceanic_mean_gamma <- mean(nonoceanic_abs_diff$nonoceanic_delta_gam)
+    dplyr::filter(lambda_c_sim == clado_rate) %>% #isolate for a given value of cladogenesis
+    dplyr::filter(mu_sim == ext_rate) %>% #isolate for a given value of extinction
+    dplyr::filter(prop_mainland == mainland) %>% #isolate for a given proportion of mainland 
+    dplyr::filter(prop_non_endemic == nonendemic) %>% #isolate for a given proportion of nonendemics 
+    dplyr::mutate(nonoceanic_delta_gam = abs(log(gamma) - log(gamma_sim))) %>% #calculate the absolute difference between ML estimate and true value
+    tidyr::drop_na() #remove any NA values
+  #deal with any outliers
+  nonoceanic_mean_gamma <- mean(nonoceanic_abs_diff$nonoceanic_delta_gam) #calculate the average of the absolute differences
 
-  delta <- (oceanic_mean_gamma - nonoceanic_mean_gamma)
+  delta <- (oceanic_mean_gamma - nonoceanic_mean_gamma) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
 
-  relative_delta <- delta/immig_rate
+  relative_delta <- delta/immig_rate #Calculate the relative error of the differences
   
   return(relative_delta)
 }
@@ -148,22 +153,24 @@ ana_param_delta <- function(data, island_age, clado_rate, ext_rate, immig_rate,
                             oceanic_time = oceanic_time, nonoceanic_time = nonoceanic_time) {
   
   oceanic_abs_diff <- oceanic_time %>%
-    dplyr::filter(lambda_c_sim == clado_rate) %>%  
-    dplyr::filter(mu_sim == ext_rate) %>%
-    dplyr::mutate(nonoceanic_delta_laa = abs(log(lambda_a) - log(lambda_a_sim))) %>%
-    tidyr::drop_na()
-  oceanic_mean_laa <- mean(oceanic_abs_diff$nonoceanic_delta_laa)
+    dplyr::filter(lambda_c_sim == clado_rate) %>% #isolate for a given value of cladogenesis
+    dplyr::filter(mu_sim == ext_rate) %>% #isolate for a given value of extinction
+    dplyr::mutate(nonoceanic_delta_laa = abs(log(lambda_a) - log(lambda_a_sim))) %>% #calculate absolute difference between ML estimate and true value
+    tidyr::drop_na() #remove any NA values
+  #deal with any outliers
+  oceanic_mean_laa <- mean(oceanic_abs_diff$nonoceanic_delta_laa) #calculate the average of the absolute differences
   
   nonoceanic_abs_diff <- nonoceanic_time %>%
-    dplyr::filter(lambda_c_sim == clado_rate) %>%
-    dplyr::filter(mu_sim == ext_rate) %>%
-    dplyr::filter(prop_mainland == mainland) %>%
-    dplyr::filter(prop_non_endemic == nonendemic) %>%
-    dplyr::mutate(nonoceanic_delta_laa = abs(log(lambda_a) - log(lambda_a_sim))) %>%
-    tidyr::drop_na()
-  nonoceanic_mean_laa <- mean(nonoceanic_abs_diff$nonoceanic_delta_laa)
+    dplyr::filter(lambda_c_sim == clado_rate) %>% #isolate for a given value of cladogenesis
+    dplyr::filter(mu_sim == ext_rate) %>% #isolate for a given value of extinction
+    dplyr::filter(prop_mainland == mainland) %>% #isolate for a given proportion of mainland 
+    dplyr::filter(prop_non_endemic == nonendemic) %>% #isolate for a given proportion of nonendemics 
+    dplyr::mutate(nonoceanic_delta_laa = abs(log(lambda_a) - log(lambda_a_sim))) %>% #calculate the absolute difference between ML estimate and true value
+    tidyr::drop_na() #remove any NA values
+  #deal with any outliers
+  nonoceanic_mean_laa <- mean(nonoceanic_abs_diff$nonoceanic_delta_laa) #calculate the average of the absolute differences
   
-  delta <- (oceanic_mean_laa - nonoceanic_mean_laa)
+  delta <- (oceanic_mean_laa - nonoceanic_mean_laa) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
   
-  relative_delta <- delta/ana_rate
+  relative_delta <- delta/ana_rate #Calculate the relative error of the differences
 }
