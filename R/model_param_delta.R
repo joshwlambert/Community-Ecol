@@ -70,7 +70,7 @@ clado_param_delta <- function(oceanic_time = oceanic_time, nonoceanic_time = non
   #deal with any outliers
   nonoceanic_mean_lac <- mean(nonoceanic_abs_diff$nonoceanic_delta_lac) #calculate the average of the absolute differences
   
-  delta <- abs(oceanic_mean_lac - nonoceanic_mean_lac) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
+  delta <- abs(nonoceanic_mean_lac - oceanic_mean_lac) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
   
   relative_delta <- delta/clado_rate #Calculate the relative error of the differences
   
@@ -98,7 +98,7 @@ ext_param_delta <- function(oceanic_time = oceanic_time, nonoceanic_time = nonoc
   #deal with any outliers
   nonoceanic_mean_mu <- mean(nonoceanic_abs_diff$nonoceanic_delta_mu) #calculate the average of the absolute differences
 
-  delta <- abs(oceanic_mean_mu - nonoceanic_mean_mu) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
+  delta <- abs(nonoceanic_mean_mu - oceanic_mean_mu) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
   
   relative_delta <- delta/ext_rate #Calculate the relative error of the differences
   
@@ -126,7 +126,7 @@ immig_param_delta <- function(oceanic_time = oceanic_time, nonoceanic_time = non
   #deal with any outliers
   nonoceanic_mean_gamma <- mean(nonoceanic_abs_diff$nonoceanic_delta_gam) #calculate the average of the absolute differences
 
-  delta <- abs(oceanic_mean_gamma - nonoceanic_mean_gamma) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
+  delta <- abs(nonoceanic_mean_gamma - oceanic_mean_gamma) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
 
   relative_delta <- delta/immig_rate #Calculate the relative error of the differences
   
@@ -154,7 +154,7 @@ ana_param_delta <- function(oceanic_time = oceanic_time, nonoceanic_time = nonoc
   #deal with any outliers
   nonoceanic_mean_laa <- mean(nonoceanic_abs_diff$nonoceanic_delta_laa) #calculate the average of the absolute differences
   
-  delta <- abs(oceanic_mean_laa - nonoceanic_mean_laa) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
+  delta <- abs(nonoceanic_mean_laa - oceanic_mean_laa) #Calculate the difference betweeen the oceanic differences and the nonoceanic difference
   
   relative_delta <- delta/ana_rate #Calculate the relative error of the differences
   
