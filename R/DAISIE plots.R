@@ -29,13 +29,43 @@ clado = c(Clado_hh, clado_lh, clado_ll, clado_hl)
 ext = c(ext_hh, ext_lh, ext_ll, ext_hl)
 immig = c(immig_hh, immig_lh, immig_ll, immig_hl)
 ana = c(ana_hh, ana_lh, ana_ll, ana_hl)
-df <- data.frame(clado, ext, immig, ana)
-tidydata <- gather(df)
-mutate(tidydata, c())
-names <- c('HH', 'LH', 'LL', 'HL')
-tidydata <- cbind(tidydata, names)
+data <- data.frame(clado, ext, immig, ana) %>%
+  gather(data)
+  names <- c('HH', 'LH', 'LL', 'HL')
+  data <- cbind(data, names)
 
-p <- ggplot(data = tidydf, aes (x = tidydata[,1], y = tidydata[,2], group = )) +
+#Bar plot 
+p <- ggplot(data = tidydata, aes (x = tidydata[,1], y = tidydata[,2])) +
   geom_col(aes(fill = names), position = 'fill', colour = 'black', fill = 'white') +
-  geom_text(aes(label = tidydata[,3]), position = position_fill(vjust = 0.5))
+  geom_text(aes(label = tidydata[,3]), position = position_fill(vjust = 0.5),  size = 3) +
+  xlab("DAISIE Parameter") +
+  ylab("Weight of model difference")
+plot(p)
+
+
+head(DAISIETable)
+data <- DAISIETable %>%
+  dplyr::filter(island_type == 'nonoceanic') %>%
+  dplyr::mutate(delta = lambda_c - lambda_c_sim) %>%
+  tidyr::drop_na()
+
+#Heatmaps
+p <- ggplot(data = data, aes(x = prop_non_endemic, y = prop_mainland, fill = log(lambda_c))) + 
+  geom_tile() +
+  facet_grid(lambda_c_sim ~ time)
+plot(p)  
+
+p <- ggplot(data = data, aes(x = prop_non_endemic, y = prop_mainland, fill = (mu))) + 
+  geom_tile() +
+  facet_grid(mu_sim ~ time)
+plot(p)  
+  
+p <- ggplot(data = data, aes(x = prop_non_endemic, y = prop_mainland, fill = (gamma))) +
+  geom_tile() +
+  facet_grid(. ~ time)
+plot(p)
+
+p <- ggplot(data = data, aes(x = prop_non_endemic, y = prop_mainland, fill = log(lambda_a))) +
+  geom_tile()
+  facet_grid(. ~ time)
 plot(p)
