@@ -30,11 +30,12 @@ ext = c(ext_hh, ext_lh, ext_ll, ext_hl)
 immig = c(immig_hh, immig_lh, immig_ll, immig_hl)
 ana = c(ana_hh, ana_lh, ana_ll, ana_hl)
 df <- data.frame(clado, ext, immig, ana)
+tidydata <- gather(df)
+mutate(tidydata, c())
+names <- c('HH', 'LH', 'LL', 'HL')
+tidydata <- cbind(tidydata, names)
 
-tidydf <- gather(df)
-
-p <- ggplot(data = tidydf, aes (x = tidydf[,1], y = tidydf[,2])) +
-  geom_col(, position = 'fill')
-plot(p)
-
+p <- ggplot(data = tidydf, aes (x = tidydata[,1], y = tidydata[,2], group = )) +
+  geom_col(aes(fill = names), position = 'fill', colour = 'black', fill = 'white') +
+  geom_text(aes(label = tidydata[,3]), position = position_fill(vjust = 0.5))
 plot(p)
