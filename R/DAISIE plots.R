@@ -35,9 +35,9 @@ data <- data.frame(clado, ext, immig, ana) %>%
   data <- cbind(data, names)
 
 #Bar plot 
-p <- ggplot(data = tidydata, aes (x = tidydata[,1], y = tidydata[,2])) +
+p <- ggplot(data = data, aes (x = data$data, y = data$value)) +
   geom_col(aes(fill = names), position = 'fill', colour = 'black', fill = 'white') +
-  geom_text(aes(label = tidydata[,3]), position = position_fill(vjust = 0.5),  size = 3) +
+  geom_text(aes(label = data$names), position = position_fill(vjust = 0.5),  size = 3) +
   xlab("DAISIE Parameter") +
   ylab("Weight of model difference")
 plot(p)
@@ -62,10 +62,10 @@ plot(p)
   
 p <- ggplot(data = data, aes(x = prop_non_endemic, y = prop_mainland, fill = (gamma))) +
   geom_tile() +
-  facet_grid(. ~ time)
+  facet_wrap( ~ time)
 plot(p)
 
 p <- ggplot(data = data, aes(x = prop_non_endemic, y = prop_mainland, fill = log(lambda_a))) +
-  geom_tile()
-  facet_grid(. ~ time)
+  geom_tile() +
+  facet_wrap( ~ time)
 plot(p)
