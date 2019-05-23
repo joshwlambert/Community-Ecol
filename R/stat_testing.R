@@ -104,16 +104,90 @@ p.adjust(method = 'bonferroni')
 
 #Transform the data
 oceanic_nonoceanic <- final_data %>%
-  dplyr::filter(time == 4) 
+  dplyr::filter(time == 4) %>%
+  tidyr::drop_na()
 attach(oceanic_nonoceanic)
-#dependent variable island type
-#independent variable parameter estimate
 
 #One-way ANOVA
-anova1 <- aov(lambda_c ~ island)
+anova_clado <- aov(lambda_c ~ island)
+anova(anova_clado)
 #post-hoc p-value adjustment
-TukeyHSD(anova1)
+TukeyHSD(anova_clado)
+
+#One-way ANOVA
+anova_mu <- aov(mu ~ island)
+anova(anova_mu)
+#post-hoc p-value adjustment
+TukeyHSD(anova_mu)
+
 
 #Pairwise t-test
 pairwise.t.test(x= lambda_c, g = island, data = oceanic_nonoceanic,  p.adj = "bonferroni")
 
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+anova1<-aov(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+anova2<-aov(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+anova3<-aov(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+anova4<-aov(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+anova5<-aov(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+anova6<-aov(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+anova7<-aov(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+anova8<-aov(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+anova9<-aov(lambda_c ~ island)
+anova9<-anova(anova9)
+
+p = c(0.2753, 0.2751, 0.2752, 0.2776, 0.2751, 0.2752, 0.2751, 0.2752, anova9$`Pr(>F)`[1])
+p.adjust(p, method = 'bonferroni', n = length(p))
