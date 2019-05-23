@@ -123,3 +123,26 @@ p <- ggplot(data = data, aes (x = data$data, y = data$value)) +
   xlab("DAISIE Parameter") +
   ylab("Weight of model difference")
 plot(p)
+
+
+#Heatmaps deltas nonoceanic-oceanic in a prop_mainland prop_non_endemic grid faceted for time
+
+#Heat map delta cladogenesis both times
+clado_heatmap<- ggplot(DifTable, aes(x=prop_mainland,y=prop_non_endemic, fill=clado_diff)) + geom_tile() + facet_grid(. ~ time)
+clado_heatmap
+
+#Heat map delta extinction
+
+ext_heatmap <- ggplot(DifTable, aes(x=prop_mainland,y=prop_non_endemic, fill=ext_diff)) + geom_tile() + facet_grid(. ~ time)
+ext_heatmap
+
+
+#Heat map delta immigration
+
+immig_heatmap <- ggplot(DifTable, aes(x=prop_mainland,y=prop_non_endemic, fill=immig_diff)) + geom_tile() + facet_grid(. ~ time)
+immig_heatmap
+
+#Heat map delta anagenesis
+
+ana_heatmap <- ggplot(DifTable, aes(x=prop_mainland,y=prop_non_endemic, fill=ana_diff)) + geom_tile() + facet_grid(. ~ time)
+ana_heatmap
