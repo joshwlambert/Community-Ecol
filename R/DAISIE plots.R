@@ -3,7 +3,7 @@ clado_plot <- ggplot(data = data) +
   geom_violin(mapping = aes(x = factor(time), y = lambda_c, fill = factor(time))) +
   geom_hline(yintercept = 2.5) +
   scale_y_log10() +
-  facet_wrap(prop_non_endemic ~ prop_mainland, nrow = 1) +
+  facet_wrap( ~ island, nrow = 1) +
   ylab('Cladogenesis rate') +
   xlab('Island Age') 
 plot(clado_plot)
