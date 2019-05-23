@@ -46,48 +46,6 @@ plot(p)
   
 
 
-#Parameter differences
-
-Clado_one_nine = 0.205411
-clado_one_seven =  0.6262914
-clado_one_five =  1.851296
-clado_two_nine = 0.9706154
-clado_two_seven  = 0.205411
-clado_two_five = 0.6262914
-clado_four_nine = 1.851296
-clado_four_seven = 0.9706154
-clado_four_five = 0.9706154
-
-ext_one_nine = 0.002954286 
-ext_one_seven = 0.008827768  
-ext_one_five = 0.04387181  
-ext_two_nine = 0.1591237 
-ext_two_seven  = 0.002954286 
-ext_two_five = 0.008827768  
-ext_four_nine = 0.04387181   
-ext_four_seven = 0.1591237 
-ext_four_five = 0.1591237 
-  
-immig_one_nine = 9.986142
-immig_one_seven = 3.455252   
-immig_one_five = 13.12838   
-immig_two_nine = 30.25532
-immig_two_seven  = 9.986142
-immig_two_five = 3.455252 
-immig_four_nine = 13.12838  
-immig_four_seven = 30.25532
-immig_four_five = 30.25532
-
-ana_one_nine = 0.8227131
-ana_one_seven = 1.443557    
-ana_one_five = 1.691687    
-ana_two_nine = 1.443557 
-ana_two_seven  = 0.8227131
-ana_two_five = 1.443557
-ana_four_nine = 1.691687 
-ana_four_seven = 1.443557 
-ana_four_five = 1.443557 
-
 head(DAISIETable)
 data <- DAISIETable %>%
   dplyr::filter(island_type == 'nonoceanic') %>%
