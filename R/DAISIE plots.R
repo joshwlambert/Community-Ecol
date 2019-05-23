@@ -8,6 +8,7 @@ clado_plot <- ggplot(data = data) +
   xlab('Island Age') 
 plot(clado_plot)
 
+
 #violin plot for mu
 ext_plot <- ggplot(data = data) +
   geom_violin(mapping = aes(x = factor(time), y = mu, fill = factor(time))) +
