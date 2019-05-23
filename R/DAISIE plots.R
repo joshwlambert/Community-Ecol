@@ -1,9 +1,3 @@
-data<- DAISIETable[, 1:5]
-data <- cbind(data, DAISIETable[, 9:10])
-data <- cbind(data, DAISIETable[, 15:17])
-data <- data[, -5]
-data <- as_tibble(data)
-
 #violin plot for lambda_c 
 clado_plot <- ggplot(data = data) +
   geom_violin(mapping = aes(x = factor(time), y = lambda_c, fill = factor(time))) +
