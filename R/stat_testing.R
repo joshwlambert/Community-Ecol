@@ -154,73 +154,551 @@ anova(anova_ana)
 TukeyHSD(anova_ana)
 
 
-#Pairwise t-test
-pairwise.t.test(x= lambda_c, g = island, data = oceanic_nonoceanic,  p.adj = "bonferroni")
-
+#Paired t-test for lambda_c at time = 4
 
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
   dplyr::filter(island == 'LL' | island == 'O') %>%
   tidyr::drop_na()
 attach(oceanic_nonoceanic)
-anova1<-aov(lambda_c ~ island)
+t_test_1<-t.test(lambda_c ~ island)
 
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
   dplyr::filter(island == 'LM' | island == 'O') %>%
   tidyr::drop_na()
 attach(oceanic_nonoceanic)
-anova2<-aov(lambda_c ~ island)
+t_test_2<-t.test(lambda_c ~ island)
 
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
   dplyr::filter(island == 'LH' | island == 'O') %>%
   tidyr::drop_na()
 attach(oceanic_nonoceanic)
-anova3<-aov(lambda_c ~ island)
+t_test_3<-t.test(lambda_c ~ island)
 
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
   dplyr::filter(island == 'ML' | island == 'O') %>%
   tidyr::drop_na()
 attach(oceanic_nonoceanic)
-anova4<-aov(lambda_c ~ island)
+t_test_4<-t.test(lambda_c ~ island)
 
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
   dplyr::filter(island == 'MM' | island == 'O') %>%
   tidyr::drop_na()
 attach(oceanic_nonoceanic)
-anova5<-aov(lambda_c ~ island)
+t_test_5<-t.test(lambda_c ~ island)
 
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
   dplyr::filter(island == 'MH' | island == 'O') %>%
   tidyr::drop_na()
 attach(oceanic_nonoceanic)
-anova6<-aov(lambda_c ~ island)
+t_test_6<-t.test(lambda_c ~ island)
 
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
   dplyr::filter(island == 'HL' | island == 'O') %>%
   tidyr::drop_na()
 attach(oceanic_nonoceanic)
-anova7<-aov(lambda_c ~ island)
+t_test_7<-t.test(lambda_c ~ island)
 
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
   dplyr::filter(island == 'HM' | island == 'O') %>%
   tidyr::drop_na()
 attach(oceanic_nonoceanic)
-anova8<-aov(lambda_c ~ island)
+t_test_8<-t.test(lambda_c ~ island)
 
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
   dplyr::filter(island == 'HH' | island == 'O') %>%
   tidyr::drop_na()
 attach(oceanic_nonoceanic)
-anova9<-aov(lambda_c ~ island)
-anova9<-anova(anova9)
+t_test_9<-t.test(lambda_c ~ island)
 
-p = c(anova1$`Pr(>F)`[1], anova2$`Pr(>F)`[1], anova3$`Pr(>F)`[1], anova4$`Pr(>F)`[1], anova5$`Pr(>F)`[1], anova6$`Pr(>F)`[1], anova7$`Pr(>F)`[1], anova8$`Pr(>F)`[1], anova9$`Pr(>F)`[1])
+p = c(t_test_1$p.value, t_test_2$p.value, t_test_3$p.value, t_test_4$p.value, t_test_5$p.value, t_test_6$p.value, t_test_7$p.value, t_test_8$p.value, t_test_9$p.value)
 p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Paired t-test for lambda_c at time = 10
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_1<-t.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_2<-t.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_3<-t.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_4<-t.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_5<-t.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_6<-t.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_7<-t.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_8<-t.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_9<-t.test(lambda_c ~ island)
+
+p = c(t_test_1$p.value, t_test_2$p.value, t_test_3$p.value, t_test_4$p.value, t_test_5$p.value, t_test_6$p.value, t_test_7$p.value, t_test_8$p.value, t_test_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Paired t-test for mu at time = 4
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_1<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_2<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_3<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_4<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_5<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_6<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_7<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_8<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_9<-t.test(mu ~ island)
+
+p = c(t_test_1$p.value, t_test_2$p.value, t_test_3$p.value, t_test_4$p.value, t_test_5$p.value, t_test_6$p.value, t_test_7$p.value, t_test_8$p.value, t_test_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Paired t-test for mu at time = 10
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_1<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_2<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_3<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_4<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_5<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_6<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_7<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_8<-t.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_9<-t.test(mu ~ island)
+
+p = c(t_test_1$p.value, t_test_2$p.value, t_test_3$p.value, t_test_4$p.value, t_test_5$p.value, t_test_6$p.value, t_test_7$p.value, t_test_8$p.value, t_test_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Paired t-test for gamma at time = 4
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_1<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_2<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_3<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_4<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_5<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_6<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_7<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_8<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_9<-t.test(gamma ~ island)
+
+p = c(t_test_1$p.value, t_test_2$p.value, t_test_3$p.value, t_test_4$p.value, t_test_5$p.value, t_test_6$p.value, t_test_7$p.value, t_test_8$p.value, t_test_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Paired t-test for gamma at time = 10
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_1<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_2<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_3<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_4<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_5<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_6<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_7<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_8<-t.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_9<-t.test(gamma ~ island)
+
+p = c(t_test_1$p.value, t_test_2$p.value, t_test_3$p.value, t_test_4$p.value, t_test_5$p.value, t_test_6$p.value, t_test_7$p.value, t_test_8$p.value, t_test_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Paired t-test for lambda_a at time = 4
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_1<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_2<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_3<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_4<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_5<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_6<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_7<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_8<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_9<-t.test(lambda_a ~ island)
+
+p = c(t_test_1$p.value, t_test_2$p.value, t_test_3$p.value, t_test_4$p.value, t_test_5$p.value, t_test_6$p.value, t_test_7$p.value, t_test_8$p.value, t_test_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+
+#Paired t-test for lambda_a at time = 10
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_1<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_2<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_3<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_4<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_5<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_6<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_7<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_8<-t.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+t_test_9<-t.test(lambda_a ~ island)
+
+p = c(t_test_1$p.value, t_test_2$p.value, t_test_3$p.value, t_test_4$p.value, t_test_5$p.value, t_test_6$p.value, t_test_7$p.value, t_test_8$p.value, t_test_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+
+
+
