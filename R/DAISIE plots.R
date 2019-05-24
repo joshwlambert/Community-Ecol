@@ -1,22 +1,80 @@
+rm(list=ls())
+library(ggplot2)
+
+
+#add a column to the dataframe for the right sequence of facets
+final_data$island_f <- factor(final_data$island, levels = c("O", "LL", "LM", "LH","ML", "MM", "MH", "HL", "HM", "HH"))
+
+
 #violin plot for lambda_c 
-clado_plot <- ggplot(data = data) +
+clado_plot <- ggplot(data = final_data) +
   geom_violin(mapping = aes(x = factor(time), y = lambda_c, fill = factor(time))) +
   geom_hline(yintercept = 2.5) +
   scale_y_log10() +
-  facet_wrap( ~ island, nrow = 1) +
-  ylab('Cladogenesis rate') +
-  xlab('Island Age') 
-plot(clado_plot)
+  facet_wrap( ~ island_f, nrow = 1) +
+  labs(x= "Island Age (myr)", y=bquote("Cladogenesis rate"~(myr^-1)), fill="Island Age (myr)") +
+  ggtitle("Maximum likelihood cladogenesis value distribution") + theme(plot.title= element_text(hjust=0.5))
+
+#dataframe containing the asterixes for the significance                                       
+clado_ast <- data.frame(label= rep("*", 1), island_f=c("LM"), x = rep(1,1), y= rep(100000,1))
+
+#add the asterixes to the plot
+clado_plot + geom_text(data=clado_ast, mapping = aes(x=x, y=y, label= label))
 
 #violin plot for mu
-ext_plot <- ggplot(data = data) +
+ext_plot <- ggplot(data = final_data) +
   geom_violin(mapping = aes(x = factor(time), y = mu, fill = factor(time))) +
   geom_hline(yintercept = 2.5) +
+  ylim(0,8) +
+  facet_wrap(~ island_f, nrow = 1) +
+  labs(x= "Island Age (myr)", y=bquote("Extinction rate"~(myr^-1)), fill="Island Age (myr)") +
+  ggtitle("Maximum likelihood extinction value distribution") + theme(plot.title= element_text(hjust=0.5)) +
+  guides(fill= FALSE)
+  
+#dataframe containing the asterixes for the significance                                       
+ext_ast <- data.frame(label= rep("*", 11), island_f=c("LL", "LM", "LH", "ML", "MM", "MH", "HL", "HM", "HH", "LL", "LH"), x = c(rep(1,9),2,2) , y= rep(8,11))
+
+#add the asterixes to the plot
+ext_plot + geom_text(data=ext_ast, mapping = aes(x=x, y=y, label= label))
+
+#violin plot for gamma
+immig_plot <- ggplot(data = final_data) +
+  geom_violin(mapping = aes(x = factor(time), y = gamma, fill = factor(time))) +
+  geom_hline(yintercept = 0.01) +
   scale_y_log10() +
+<<<<<<< HEAD
+  facet_wrap(~ island_f, nrow = 1) +
+  labs(x= "Island Age (myr)", y=bquote("Immigration rate"~(myr^-1)), fill="Island Age (myr)")+
+  ggtitle("Maximum likelihood immigration value distribution") + theme(plot.title= element_text(hjust=0.5)) +
+  guides(fill= FALSE)
+
+#dataframe containing the asterixes for the significance                                       
+immig_ast <- data.frame(label= rep("*", 6), island_f=c("LM", "MM", "MH", "HL", "HM", "HH"), x = c(rep(1,6)) , y= rep(0.1,6))
+
+#add the asterixes to the plot
+immig_plot + geom_text(data=immig_ast, mapping = aes(x=x, y=y, label= label))
+
+#violin plot for lambda a
+ana_plot <- ggplot(data = final_data) +
+  geom_violin(mapping = aes(x = factor(time), y = lambda_a, fill = factor(time))) +
+  geom_hline(yintercept = 1) +
+  scale_y_log10() +
+  facet_wrap(~ island_f, nrow = 1) +
+  labs(x= "Island Age (myr)", y=bquote("Anagenesis rate"~(myr^-1)), fill="Island Age (myr)") +
+  ggtitle("Maximum likelihood anagenesis value distribution") + theme(plot.title= element_text(hjust=0.5)) +
+  guides(fill= FALSE)
+
+#dataframe containing the asterixes for the significance                                       
+ana_ast <- data.frame(label="*", island_f="HL", x =1 , y= 100000000)
+
+#add the asterixes to the plot
+plot(ana_plot) + geom_text(data=ana_ast, aes(x=x, y=y, label=label))
+=======
   facet_wrap( ~ island, nrow = 1) +
   ylab('Extinction rate') +
   xlab('Island Age') 
 plot(ext_plot)
+>>>>>>> 97fbec834a9df7ef81b713a22e8086b230baf19a
 
 #violin plot for gamma
 gamma_plot <- ggplot(data = data) +
