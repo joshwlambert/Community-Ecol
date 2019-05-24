@@ -8,17 +8,35 @@ clado_plot <- ggplot(data = data) +
   xlab('Island Age') 
 plot(clado_plot)
 
-
 #violin plot for mu
 ext_plot <- ggplot(data = data) +
   geom_violin(mapping = aes(x = factor(time), y = mu, fill = factor(time))) +
   geom_hline(yintercept = 2.5) +
   scale_y_log10() +
-  ylim(0, 8) +
-  facet_wrap(prop_non_endemic ~ prop_mainland, nrow = 1) +
+  facet_wrap( ~ island, nrow = 1) +
   ylab('Extinction rate') +
   xlab('Island Age') 
 plot(ext_plot)
+
+#violin plot for gamma
+gamma_plot <- ggplot(data = data) +
+  geom_violin(mapping = aes(x = factor(time), y = gamma, fill = factor(time))) +
+  geom_hline(yintercept = 0.01) +
+  scale_y_log10() +
+  facet_wrap( ~ island, nrow = 1) +
+  ylab('Immigration rate') +
+  xlab('Island Age') 
+plot(gamma_plot)
+
+#violin plot for lambda_a
+lambda_a_plot <- ggplot(data = data) +
+  geom_violin(mapping = aes(x = factor(time), y = lambda_a, fill = factor(time))) +
+  geom_hline(yintercept = 0.01) +
+  scale_y_log10() +
+  facet_wrap( ~ island, nrow = 1) +
+  ylab('Anagenesis rate') +
+  xlab('Island Age') 
+plot(gamma_plot)
 
 
 data <- dplyr::filter(data, time == 4)

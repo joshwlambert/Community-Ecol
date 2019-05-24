@@ -123,7 +123,35 @@ anova(anova_ana)
 #post-hoc p-value adjustment
 TukeyHSD(anova_ana)
 
+#Transform the data for time = 10
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
 
+#One-way ANOvA for time = 10
+anova_clado <- aov(lambda_c ~ island)
+anova(anova_clado)
+#post-hoc p-value adjustment
+TukeyHSD(anova_clado)
+
+#One-way ANOvA for time = 10
+anova_mu <- aov(mu ~ island)
+anova(anova_mu)
+#post-hoc p-value adjustment
+TukeyHSD(anova_mu)
+
+#One-way ANOvA for time = 10
+anova_gamma <- aov(gamma ~ island)
+anova(anova_gamma)
+#post-hoc p-value adjustment
+TukeyHSD(anova_gamma)
+
+#One-way ANOvA for time = 10
+anova_ana <- aov(lambda_a ~ island)
+anova(anova_ana)
+#post-hoc p-value adjustment
+TukeyHSD(anova_ana)
 
 
 #Pairwise t-test
