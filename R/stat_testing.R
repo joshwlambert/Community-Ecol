@@ -93,15 +93,6 @@ FINISH
 #Barlett test for homogeneity of variances
 bartlett.test(log(oceanic_four$lambda_c), log(nonoceanic_four_one_nine$lambda_c), data = )
 
-#Paired t-test
-test1 <- t.test(oceanic_four$lambda_c, nonoceanic_four_one_nine$lambda_c, paired=TRUE, alt="less")
-test2 <- t.test(oceanic_four$lambda_c, nonoceanic_four_one_nine$lambda_c, paired=TRUE, alt="less")
-test3 <- t.test(oceanic_four$lambda_c, nonoceanic_four_one_nine$lambda_c, paired=TRUE, alt="less")
-test4 <- t.test(oceanic_four$lambda_c, nonoceanic_four_one_nine$lambda_c, paired=TRUE, alt="less")
-tests <- #data.frame of p values
-p.adjust(method = 'bonferroni')
-
-
 #Transform the data
 oceanic_nonoceanic <- final_data %>%
   dplyr::filter(time == 4) %>%
@@ -119,6 +110,20 @@ anova_mu <- aov(mu ~ island)
 anova(anova_mu)
 #post-hoc p-value adjustment
 TukeyHSD(anova_mu)
+
+#One-way ANOvA
+anova_gamma <- aov(gamma ~ island)
+anova(anova_gamma)
+#post-hoc p-value adjustment
+TukeyHSD(anova_gamma)
+
+#One-way ANOvA
+anova_ana <- aov(ana ~ island)
+anova(anova_ana)
+#post-hoc p-value adjustment
+TukeyHSD(anova_ana)
+
+
 
 
 #Pairwise t-test
@@ -189,5 +194,5 @@ attach(oceanic_nonoceanic)
 anova9<-aov(lambda_c ~ island)
 anova9<-anova(anova9)
 
-p = c(0.2753, 0.2751, 0.2752, 0.2776, 0.2751, 0.2752, 0.2751, 0.2752, anova9$`Pr(>F)`[1])
+p = c(anova1$`Pr(>F)`[1], anova2$`Pr(>F)`[1], anova3$`Pr(>F)`[1], anova4$`Pr(>F)`[1], anova5$`Pr(>F)`[1], anova6$`Pr(>F)`[1], anova7$`Pr(>F)`[1], anova8$`Pr(>F)`[1], anova9$`Pr(>F)`[1])
 p.adjust(p, method = 'bonferroni', n = length(p))
