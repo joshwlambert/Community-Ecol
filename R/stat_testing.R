@@ -699,6 +699,549 @@ t_test_9<-t.test(lambda_a ~ island)
 p = c(t_test_1$p.value, t_test_2$p.value, t_test_3$p.value, t_test_4$p.value, t_test_5$p.value, t_test_6$p.value, t_test_7$p.value, t_test_8$p.value, t_test_9$p.value)
 p.adjust(p, method = 'bonferroni', n = length(p))
 
+#Mann-Whitney-Wilcoxon Test for lambda_c at time = 4
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_1<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_2<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_3<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_4<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_5<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_6<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_7<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_8<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_9 <- wilcox.test(lambda_c ~ island) 
+
+p = c(wilcoxon_1$p.value, wilcoxon_2$p.value, wilcoxon_3$p.value, wilcoxon_4$p.value, wilcoxon_5$p.value, wilcoxon_6$p.value, wilcoxon_7$p.value, wilcoxon_8$p.value, wilcoxon_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Mann-Whitney-Wilcoxon Test for lambda_c at time = 10
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_1<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_2<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_3<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_4<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_5<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_6<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_7<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_8<-wilcox.test(lambda_c ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_9 <- wilcox.test(lambda_c ~ island) 
+
+p = c(wilcoxon_1$p.value, wilcoxon_2$p.value, wilcoxon_3$p.value, wilcoxon_4$p.value, wilcoxon_5$p.value, wilcoxon_6$p.value, wilcoxon_7$p.value, wilcoxon_8$p.value, wilcoxon_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Mann-Whitney-Wilcoxon Test for mu at time = 4
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_1<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_2<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_3<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_4<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_5<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_6<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_7<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_8<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_9 <- wilcox.test(mu ~ island) 
+
+p = c(wilcoxon_1$p.value, wilcoxon_2$p.value, wilcoxon_3$p.value, wilcoxon_4$p.value, wilcoxon_5$p.value, wilcoxon_6$p.value, wilcoxon_7$p.value, wilcoxon_8$p.value, wilcoxon_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Mann-Whitney-Wilcoxon Test for mu at time = 10
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_1<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_2<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_3<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_4<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_5<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_6<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_7<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_8<-wilcox.test(mu ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_9 <- wilcox.test(mu ~ island) 
+
+p = c(wilcoxon_1$p.value, wilcoxon_2$p.value, wilcoxon_3$p.value, wilcoxon_4$p.value, wilcoxon_5$p.value, wilcoxon_6$p.value, wilcoxon_7$p.value, wilcoxon_8$p.value, wilcoxon_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+#Mann-Whitney-Wilcoxon Test for gamma at time = 4
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_1<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_2<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_3<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_4<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_5<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_6<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_7<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_8<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_9 <- wilcox.test(gamma ~ island) 
+
+p = c(wilcoxon_1$p.value, wilcoxon_2$p.value, wilcoxon_3$p.value, wilcoxon_4$p.value, wilcoxon_5$p.value, wilcoxon_6$p.value, wilcoxon_7$p.value, wilcoxon_8$p.value, wilcoxon_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
 
 
+#Mann-Whitney-Wilcoxon Test for gamma at time = 10
 
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_1<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_2<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_3<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_4<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_5<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_6<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_7<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_8<-wilcox.test(gamma ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_9 <- wilcox.test(gamma ~ island) 
+
+p = c(wilcoxon_1$p.value, wilcoxon_2$p.value, wilcoxon_3$p.value, wilcoxon_4$p.value, wilcoxon_5$p.value, wilcoxon_6$p.value, wilcoxon_7$p.value, wilcoxon_8$p.value, wilcoxon_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+
+#Mann-Whitney-Wilcoxon Test for lambda_a at time = 4
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_1<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_2<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_3<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_4<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_5<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_6<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_7<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_8<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 4) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_9 <- wilcox.test(lambda_a ~ island) 
+
+p = c(wilcoxon_1$p.value, wilcoxon_2$p.value, wilcoxon_3$p.value, wilcoxon_4$p.value, wilcoxon_5$p.value, wilcoxon_6$p.value, wilcoxon_7$p.value, wilcoxon_8$p.value, wilcoxon_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
+
+
+#Mann-Whitney-Wilcoxon Test for lambda_a at time = 10
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_1<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_2<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'LH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_3<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'ML' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_4<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_5<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'MH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_6<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HL' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_7<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HM' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_8<-wilcox.test(lambda_a ~ island)
+
+oceanic_nonoceanic <- final_data %>%
+  dplyr::filter(time == 10) %>%
+  dplyr::filter(island == 'HH' | island == 'O') %>%
+  tidyr::drop_na()
+attach(oceanic_nonoceanic)
+wilcoxon_9 <- wilcox.test(lambda_a ~ island) 
+
+p = c(wilcoxon_1$p.value, wilcoxon_2$p.value, wilcoxon_3$p.value, wilcoxon_4$p.value, wilcoxon_5$p.value, wilcoxon_6$p.value, wilcoxon_7$p.value, wilcoxon_8$p.value, wilcoxon_9$p.value)
+p.adjust(p, method = 'bonferroni', n = length(p))
